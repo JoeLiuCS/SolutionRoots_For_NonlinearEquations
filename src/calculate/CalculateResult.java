@@ -5,8 +5,21 @@ import java.util.Stack;
 
 import polynomial.BaseOperators;
 import polynomial.GivenNumber;
-
+/**
+ * 
+ * This class finish the calculation by given operator order
+ * Example:  
+ * 			Given :223*-
+ * 			1: 2-3 = -1   -> Given become : 2 -1  *
+ * 			2: 2 * -1 = -2  -> Given become : -2
+ * 			result : -2
+ * 
+ * Video : https://www.youtube.com/watch?v=y_snKkv0gWc
+ * @author shuoqiaoliu
+ *
+ */
 public class CalculateResult {
+	// the finished order operators
 	private Queue<BaseOperators> inputOperators;
 	private double result;
 	
@@ -16,12 +29,16 @@ public class CalculateResult {
 	}
 	
 	private void calcualateByGivenInput(){
+		// stack to save the result
 		Stack<BaseOperators> temp_result = new Stack<>();
+		//read all operators
 		while(!inputOperators.isEmpty()){
 			BaseOperators top = inputOperators.poll();
+			//if it is number
 			if(top.getType() == 'N'){
 				temp_result.push(top);
 			}
+			// operator is sin cos or tan
 			else if (top.getType() == 'T'){
 				BaseOperators temp_top = temp_result.pop();
 				double num = Double.parseDouble(temp_top.getOperator());
@@ -41,6 +58,7 @@ public class CalculateResult {
 				}
 				temp_result.push(new GivenNumber('N',6,ans));
 			}
+			// operator is hyperbolic 
 			else if (top.getType() =='H'){
 				BaseOperators temp_top = temp_result.pop();
 				double num = Double.parseDouble(temp_top.getOperator());
@@ -60,6 +78,7 @@ public class CalculateResult {
 				}
 				temp_result.push(new GivenNumber('N',6,ans));
 			}
+			// Operator is * / + - or ^
 			else{
 				double num2 = Double.parseDouble(temp_result.pop().getOperator());
 				double num1 = Double.parseDouble(temp_result.pop().getOperator()); 
@@ -82,6 +101,7 @@ public class CalculateResult {
 	            temp_result.push(new GivenNumber('N',6,ans));
 			}
 		}
+		//get final result
 		result = Double.parseDouble(temp_result.pop().getOperator());
 	}
 	
