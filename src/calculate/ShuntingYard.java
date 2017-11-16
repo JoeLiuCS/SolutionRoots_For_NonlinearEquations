@@ -223,6 +223,9 @@ public class ShuntingYard {
 		}
 		//===================Print=======================
 		public void printMyConversion(){
+			System.out.println("Given function : "+givenFunction);
+			System.out.println("Input x : " + variableValue);
+			System.out.println("Operator reorder : ");
 			for(BaseOperators q:allOperators){
 				System.out.print(" [ "+q.getOperator() + " ] ");
 			}
