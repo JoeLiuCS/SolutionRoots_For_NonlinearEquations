@@ -42,7 +42,6 @@ public class CalculateResult {
 			else if (top.getType() == 'T'){
 				BaseOperators temp_top = temp_result.pop();
 				double num = Double.parseDouble(temp_top.getOperator());
-				num = Math.toRadians(num);
 				String ans = "";
 				if(top.getOperator().equals("sin")){
 					ans = String.valueOf(Math.sin(num));
@@ -62,7 +61,6 @@ public class CalculateResult {
 			else if (top.getType() =='H'){
 				BaseOperators temp_top = temp_result.pop();
 				double num = Double.parseDouble(temp_top.getOperator());
-				num = Math.toRadians(num);
 				String ans = "";
 				if(top.getOperator().equals("sinh")){
 					ans = String.valueOf(Math.sinh(num));

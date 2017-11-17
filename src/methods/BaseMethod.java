@@ -8,6 +8,8 @@ import calculate.*;
  *
  */
 public class BaseMethod {
+		final double modified_constant = 0.01;
+		final double minimum_error = 0.01;
 		private String fx;
 		private String dirivative_fx;
 		private double result;
@@ -43,4 +45,9 @@ public class BaseMethod {
 			CalculateResult c = new CalculateResult(s.getFinalConversion());
 			return c.getResult();
 		}
+		
+		public double check_errorPrecentage(double last_value,double current_value){
+			return (Math.abs(last_value-current_value))/(Math.abs(current_value));
+		}
+		
 }

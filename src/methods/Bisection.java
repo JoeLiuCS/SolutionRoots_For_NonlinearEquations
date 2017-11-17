@@ -2,7 +2,7 @@ package methods;
 
 public class Bisection extends BaseMethod{
 	final char char_null = '\u0000';
-	final double minimum_error = 0.01;
+
 	private double range_begin;
 	private double range_end;
 	
@@ -22,17 +22,17 @@ public class Bisection extends BaseMethod{
 	 * then jump to recursion function
 	 */
 	private void findRoot(){
-		double mid = (this.range_begin+this.range_end)/2;
-		double a_value = this.CalculateFX_byGivenValue(this.range_begin);
-		double b_value =this.CalculateFX_byGivenValue(this.range_end);
-		double c_value = this.CalculateFX_byGivenValue(mid);
+		double mid = (range_begin+range_end)/2;
+		double a_value = CalculateFX_byGivenValue(range_begin);
+		double b_value =CalculateFX_byGivenValue(range_end);
+		double c_value = CalculateFX_byGivenValue(mid);
 		char check_replace = a_or_b_replace(a_value,b_value,c_value);
 		if(check_replace=='a'){
-			findRoot_recursion(mid,this.range_end,c_value,b_value,mid,1.0);
+			findRoot_recursion(mid,range_end,c_value,b_value,mid,1.0);
 		}
 		
 		if(check_replace=='b'){
-			findRoot_recursion(this.range_begin,mid,a_value,c_value,mid,1.0);
+			findRoot_recursion(range_begin,mid,a_value,c_value,mid,1.0);
 		}
 	}
 	
@@ -45,14 +45,15 @@ public class Bisection extends BaseMethod{
 											double prerious_mid,double error_precentage)
 	{
 		if(error_precentage < minimum_error){
-			this.setResult(num_start);
+			setResult(num_start);
 			return;
 		}
 		double mid = (num_start+num_end)/2;
-		double c_value = this.CalculateFX_byGivenValue(mid);
+		double c_value = CalculateFX_byGivenValue(mid);
 		char check_replace = a_or_b_replace(value_start,value_end,c_value);
 		double error = check_errorPrecentage(prerious_mid,mid);
 		
+		System.out.println("Bisection error precentage: " + error);
 		if(check_replace=='a'){
 			findRoot_recursion(mid,num_end,c_value,value_end,mid,error);
 		}
@@ -87,8 +88,5 @@ public class Bisection extends BaseMethod{
 		return result;
 	}
 	
-	private double check_errorPrecentage(double last_value,double current_value){
-		return (Math.abs(last_value-current_value))/(Math.abs(current_value));
-	}
-	
+
 }
