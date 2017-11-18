@@ -3,8 +3,8 @@ package calculate;
 import java.util.Queue;
 import java.util.Stack;
 
-import polynomial.BaseOperators;
-import polynomial.GivenNumber;
+import operators.BaseOperators;
+import operators.GivenNumber;
 /**
  * 
  * This class finish the calculation by given operator order

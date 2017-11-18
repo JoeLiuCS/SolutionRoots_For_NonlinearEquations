@@ -1,4 +1,4 @@
-package polynomial;
+package operators;
 
 public class Bracket extends BaseOperators{
 

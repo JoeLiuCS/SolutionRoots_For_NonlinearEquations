@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
-import polynomial.*;
+import operators.*;
 
 /**
  *   Class : Shunting-yard algorithm is a method for parsing mathematical 
@@ -155,10 +155,10 @@ public class ShuntingYard {
 					allOperators.add(new PowerRoot('R',3,token));
 				}
 				else if (checkIsDivOrMult(token)){
-					allOperators.add(new PowerRoot('M',2,token));
+					allOperators.add(new DivOrMult('M',2,token));
 				}
 				else if (checkIsAddOrSub(token)){
-					allOperators.add(new PowerRoot('A',1,token));
+					allOperators.add(new AddOrSub('A',1,token));
 				}
 				else{
 					throw new IllegalArgumentException("The input is not valid!!");
