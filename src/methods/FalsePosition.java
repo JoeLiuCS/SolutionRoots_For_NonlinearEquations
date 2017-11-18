@@ -49,7 +49,7 @@ public class FalsePosition extends BaseMethod{
 			findRoot_recursion(nextPosition,num_end,nextPosition,error);
 		}
 	}
-	
+	//formula function
 	private double falsePosition_format(double postion_start,double position_end){
 		double start_value = CalculateFX_byGivenValue(postion_start);
 		double end_value =CalculateFX_byGivenValue(position_end);

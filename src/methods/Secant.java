@@ -9,16 +9,25 @@ public class Secant extends BaseMethod{
 		super(fx, dirivative_fx);
 		this.range_begin = range_begin;
 		this.range_end = range_end;
+		findRoot();
 	}
 	
 	public void findRoot(){
-		
+		findRoot_recursion(range_begin,range_end,1.0);
 	}
-	private void findRoot_recursion(double error_percentage){
+	private void findRoot_recursion(double num_start,double num_end,double error_percentage){
+		
+		// show error 
+		System.out.println("Secant method error precentage: " + error_percentage);
+				
 		if(error_percentage<minimum_error){
+			setResult(num_start);
 			return;
 		}
 		
+		double next_position = Secant_format(num_start,num_end);
+		double error = check_errorPrecentage(num_start,next_position);
+		findRoot_recursion(next_position,num_start,error);
 	}
 	
 	private double Secant_format(double postion_start,double position_end){
